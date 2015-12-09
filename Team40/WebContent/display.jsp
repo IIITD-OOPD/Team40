@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/do.upload" method="post">
+
+<form action="upload" name="uploadxml" method="post">
 upload xml: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="file" name="file" size="30" />
 <input type="submit" value="Upload File" />

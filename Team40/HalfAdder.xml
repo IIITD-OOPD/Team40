@@ -1,0 +1,25 @@
+<circuit name="Half Adder">
+    
+	<input id='1' name='A'> </input>
+	<input id='2' name='B'> </input>
+	
+	
+	<gate id='1' type='xor'> 
+	  <input type='input' id='1'> </input>
+	  <input type='input' id='2'> </input>
+	</gate>
+	
+	<gate id='2' type='and'> 
+	  <input type='input' id='1'> </input>
+	  <input type='input' id='2'> </input>
+	</gate>
+	
+	<output id='1'>
+	   <input type='gate' id='1'> </input>
+	</output>
+	
+	<output id='2'>
+	   <input type='gate' id='2'> </input>
+	</output>
+	
+</circuit>

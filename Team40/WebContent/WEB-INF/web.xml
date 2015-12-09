@@ -3,13 +3,11 @@
   <display-name>Team40</display-name>
   
    <servlet>
-    <servlet-name>upload</servlet-name>
-    <servlet-class>src\main\java\oopd\Team40\servelet\Upload</servlet-class>
+    <servlet-name>uploadxml</servlet-name>
+    <servlet-class>oopd.Team40.servelet.Upload</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>upload</servlet-name>
-    <url-pattern>/do.upload</url-pattern>
+    <servlet-name>uploadxml</servlet-name>
+    <url-pattern>/upload</url-pattern>
   </servlet-mapping>
-  
   </web-app>
-  
