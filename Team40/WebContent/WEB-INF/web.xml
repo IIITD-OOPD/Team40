@@ -10,6 +10,7 @@
     <servlet-name>uploadxml</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+<<<<<<< 88493b7c085c95281201f183b0c75763a2278cba
   
   <servlet>
     <servlet-name>drawcircuit</servlet-name>
@@ -19,6 +20,9 @@
     <servlet-name>drawcircuit</servlet-name>
     <url-pattern>/draw</url-pattern>
   </servlet-mapping>
+=======
+
+>>>>>>> 42f1651ffc037cc92ca39caf9cde395fda5012e1
   
   <listener>
     <listener-class>
@@ -26,8 +30,13 @@
     </listener-class>
   </listener>
   
+<<<<<<< 88493b7c085c95281201f183b0c75763a2278cba
   <welcome-file-list>
     <welcome-file>home.jsp</welcome-file>
   </welcome-file-list>
 
 </web-app>
+=======
+
+  </web-app>
+>>>>>>> 42f1651ffc037cc92ca39caf9cde395fda5012e1
