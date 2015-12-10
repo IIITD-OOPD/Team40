@@ -10,4 +10,17 @@
     <servlet-name>uploadxml</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+<<<<<<< 6a1ee5aa033197525177ecb380e48e562c872e83
+=======
+  
+  <listener>
+	<listener-class>
+             oopd.Team40.model.Mainclass
+    </listener-class>
+   </listener>
+    <welcome-file-list>
+    <welcome-file>display.jsp</welcome-file>
+    </welcome-file-list>
+  
+>>>>>>> 9e9bc3a900e3da1aca47cf9e7f55c98585b061f7
   </web-app>
