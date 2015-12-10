@@ -1,0 +1,7 @@
+matlab
+octave
+R
+python
+android 
+PGM(corsera)
+Probability and Algebra (Gate Book)
