@@ -20,10 +20,8 @@ public class Circuit
 	ArrayList<Gate> gates = new ArrayList<Gate>();
 	
 	
-	public static void readXMLFile(String fileName) 
+	public void readXMLFile(String fileName) 
 	{	
-		int noOfInputs=0,noOfOutputs=0,noOfGates=0;
-		int input[]={1,0,1};
 		try 
 		{
 			File xmlFile = new File(fileName);
@@ -33,115 +31,63 @@ public class Circuit
 			
 			doc.getDocumentElement().normalize();
 			
-			NodeList nodesList = doc.getDocumentElement().getChildNodes(); 
+			name=doc.getDocumentElement().getAttribute("name");
 			
-			
-			for(int i=0;i<nodesList.getLength();i++)
-		    {
-				Node node = nodesList.item(i);
-				if(node.getNodeName().equals("input"))
-				{		
-					noOfInputs++;
-				}
-				if(node.getNodeName().equals("output"))
-				{
-					noOfOutputs++;
-				}
-				if(node.getNodeName().equals("gate"))
-				{
-					noOfGates++;
-				}
-		    }
-			System.out.println(noOfInputs +" "+noOfOutputs+" "+noOfGates);
-			
-			int gate[]=new int[noOfGates];
-			int output[]=new int[noOfOutputs];
-		    
-			for(int i=0;i<nodesList.getLength();i++)
-		    {
-				Node node = nodesList.item(i);
-				if(node.getNodeName().equals("gate"))
-				{
-					if(node.hasAttributes())
-		    		{
-		    		   NamedNodeMap nodeMap = node.getAttributes();
-		    		   for(int j=0;j<nodeMap.getLength();j++)
-		    		   {
-		    			  Node attrNode = nodeMap.item(j);
-		    			  if(attrNode.getNodeName().equals("type"))
-		    				  if(attrNode.getNodeValue().equals("xor"))
-		    				  {
-		    					  NodeList inputList = node.getChildNodes();
-		    					  for (int k = 0; k < inputList.getLength(); k++) 
-		    					  {
-		    						  Node gateInput = inputList.item(i);
-		    						  if(gateInput.hasAttributes())
-		    				    	  {
-		    							  NamedNodeMap gateInputNodeMap = gateInput.getAttributes();
-		    							  System.out.println(gateInputNodeMap.getNamedItem("type").getNodeValue());
-		    							/*  for (int l = 0; l < gateInputNodeMap.getLength(); l++) 
-		    							  {
-		    								  Node gateInputAttrNode = gateInputNodeMap.item(l);
-		    								  if(gateInputAttrNode.getNodeName().equals("type"))
-		    								  {
-		    									  if(gateInputAttrNode.getNodeValue().equals("gate"))
-		    										  Gate[
-		    								  }
-										  }*/
-		    				    	  }
-								  }
-		    				  }
-		    		   }
-		    		}
-				}
-		    }
-			
-			
-	
-			
-			//if()
-				//node.setNodeValue(String.valueOf(A));
-			
-			
-		/*	NodeList nodesList = doc.getElementsByTagName("input");
-			
-			for(int i=0;i<nodesList.getLength();i++)
-		    {
-				Node node = nodesList.item(i);
-				if(node.hasAttributes())
-	    		{
-	    		   NamedNodeMap nodeMap = node.getAttributes();
-	    		   for(int j=0;j<nodeMap.getLength();j++)
-	    		   {
-	    			  Node attrNode = nodeMap.item(j);
-	    			  if(attrNode.getNodeName().equals("type"))
-	    				  if(attrNode.getNodeValue()=;
-	    		   }
-	    		}
-		    }
-*/
-			/*for (int i = 0; i < nList.getLength(); i++) 
+			NodeList inputList = doc.getElementsByTagName("input");
+			for(int i=0;i<inputList.getLength();i++)
 			{
-				Node nNode = nList.item(i);
-						
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) 
+				Node node = inputList.item(i);
+				inputs.put("I"+node.getAttributes().getNamedItem("id"),-1);	
+			}	
+			
+			NodeList gateList = doc.getElementsByTagName("gate");
+			String id;
+			String type;
+			HashMap<String,Integer> gateInput = new HashMap<String,Integer>();
+			int output;
+			for(int i=0;i<gateList.getLength();i++)
+			{
+				Node gateNode = gateList.item(i);
+				id=gateNode.getAttributes().getNamedItem("id").getNodeValue();
+				type=gateNode.getAttributes().getNamedItem("type").getNodeValue();
+				NodeList gateInputList = gateNode.getChildNodes(); 
+				for(int j=0;j<gateInputList.getLength();j++)
 				{
-					Element eElement = (Element) nNode;
-					Float.valueOf(eElement.getElementsByTagName("price").item(0).getTextContent())
+					Node gateInputNode = gateInputList.item(j);
+					if(gateInputNode.getAttributes().getNamedItem("type").getNodeValue()=="input")
+					{
+						gateInput.put("I"+gateInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
+					}
+					else
+					if(gateInputNode.getAttributes().getNamedItem("type").getNodeValue()=="gate")
+				    {
+						gateInput.put("G"+gateInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
+					}
 				}
+				output=-1;
+				Gate gate=new Gate(id,type,gateInput,output);
+				gates.add(gate);
 			}
-            int j=0;
-			for (int i = 50; i < 60; i++) 
+			
+			NodeList outputList = doc.getElementsByTagName("output");
+			for(int i=0;i<outputList.getLength();i++)
 			{
-				Node nNode = nList.item(i);
-						
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) 
+				Node outputNode = outputList.item(i);
+				NodeList outputInputList = outputNode.getChildNodes(); 
+				for(int j=0;j<outputInputList.getLength();j++)
 				{
-					Element eElement = (Element) nNode;
-					currency[j].setCurrentPrice(Float.valueOf(eElement.getElementsByTagName("price").item(0).getTextContent()));
-					j++;				
+					Node outputInputNode = outputInputList.item(j);
+					if(outputInputNode.getAttributes().getNamedItem("type").getNodeValue()=="input")
+					{
+						outputs.put(outputNode.getAttributes().getNamedItem("id").getNodeValue()+"I"+outputInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
+					}
+					else
+					if(outputInputNode.getAttributes().getNamedItem("type").getNodeValue()=="gate")
+				    {
+						outputs.put(outputNode.getAttributes().getNamedItem("id").getNodeValue()+"G"+outputInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
+					}
 				}
-			}*/
+			}	
 			
 		  } 
 		
@@ -149,9 +95,70 @@ public class Circuit
 			e.printStackTrace();
 		 }
 	}
-
-	
-	
 }
 
+/*
+NodeList nodesList = doc.getDocumentElement().getChildNodes(); 
 
+
+for(int i=0;i<nodesList.getLength();i++)
+{
+	Node node = nodesList.item(i);
+	if(node.getNodeName().equals("input"))
+	{		
+		noOfInputs++;
+	}
+	if(node.getNodeName().equals("output"))
+	{
+		noOfOutputs++;
+	}
+	if(node.getNodeName().equals("gate"))
+	{
+		noOfGates++;
+	}
+}
+System.out.println(noOfInputs +" "+noOfOutputs+" "+noOfGates);
+
+int gate[]=new int[noOfGates];
+int output[]=new int[noOfOutputs];
+
+for(int i=0;i<nodesList.getLength();i++)
+{
+	Node node = nodesList.item(i);
+	if(node.getNodeName().equals("gate"))
+	{
+		if(node.hasAttributes())
+		{
+		   NamedNodeMap nodeMap = node.getAttributes();
+		   for(int j=0;j<nodeMap.getLength();j++)
+		   {
+			  Node attrNode = nodeMap.item(j);
+			  if(attrNode.getNodeName().equals("type"))
+				  if(attrNode.getNodeValue().equals("xor"))
+				  {
+					  NodeList inputList = node.getChildNodes();
+					  for (int k = 0; k < inputList.getLength(); k++) 
+					  {
+						  Node gateInput = inputList.item(i);
+						  if(gateInput.hasAttributes())
+				    	  {
+							  NamedNodeMap gateInputNodeMap = gateInput.getAttributes();
+							  System.out.println(gateInputNodeMap.getNamedItem("type").getNodeValue());
+							 for (int l = 0; l < gateInputNodeMap.getLength(); l++) 
+							  {
+								  Node gateInputAttrNode = gateInputNodeMap.item(l);
+								  if(gateInputAttrNode.getNodeName().equals("type"))
+								  {
+									  if(gateInputAttrNode.getNodeValue().equals("gate"))
+										  Gate[
+								  }
+							  }
+				    	  }
+					  }
+				  }
+		   }
+		}
+	}
+}
+
+*/
