@@ -1,0 +1,41 @@
+<circuit name='Full Adder'>
+    
+	<input id='1' name='A'> </input>
+	<input id='2' name='B'> </input>
+	<input id='3' name='C'> </input>
+	
+	
+	<gate id='1' type='xor'> 
+	  <input-source type='input' id='1'> </input-source>
+	  <input-source type='input' id='2'> </input-source>
+	</gate>
+	
+	<gate id='2' type='xor'> 
+	  <input-source type='input' id='3'> </input-source>
+	  <input-source type='gate' id='1'> </input-source>
+	</gate>
+	
+	<gate id='3' type='and'> 
+	  <input-source type='input' id='1'> </input-source>
+	  <input-source type='input' id='2'> </input-source>
+	</gate>
+	
+	<gate id='4' type='and'> 
+	  <input-source type='input' id='3'> </input-source>
+	  <input-source type='gate' id='1'> </input-source>
+	</gate>
+	
+	<gate id='5' type='or'> 
+	  <input-source type='gate' id='4'> </input-source>
+	  <input-source type='gate' id='5'> </input-source>
+	</gate>
+	
+	<output id='1' name='S'>
+	   <input-source type='gate' id='2'> </input-source>
+	</output>
+	
+	<output id='2' name='C'>
+	   <input-source type='gate' id='5'> </input-source>
+	</output>
+	
+</circuit>

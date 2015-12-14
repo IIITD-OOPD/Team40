@@ -14,11 +14,11 @@
 	  <input-source type='input' id='2'> </input-source>
 	</gate>
 	
-	<output id='1'name='S'>
+	<output id='1' name='S'>
 	   <input-source type='gate' id='1'> </input-source>
 	</output>
 	
-	<output id='2'name='C'>
+	<output id='2' name='C'>
 	   <input-source type='gate' id='2'> </input-source>
 	</output>
 	

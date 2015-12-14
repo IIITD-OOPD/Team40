@@ -30,7 +30,7 @@
 	  <input-source type='gate' id='5'> </input-source>
 	</gate>
 	
-	<output id='1'name='S'>
+	<output id='1' name='S'>
 	   <input-source type='gate' id='2'> </input-source>
 	</output>
 	

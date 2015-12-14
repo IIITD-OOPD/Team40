@@ -7,8 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div id="result">
-            <h3>${requestScope["message"]}</h3>
-        </div>
+
+
+
+<form action="upload" name="uploadxml" method="post" enctype="multipart/form-data">
+
+upload xml: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="file" name="filename" size="30" />
+<input type="submit" value="Upload File" />
+
+</form>
 </body>
 </html>

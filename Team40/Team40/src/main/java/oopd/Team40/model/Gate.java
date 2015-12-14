@@ -16,4 +16,28 @@ public class Gate
 		this.input = input;
 		this.output = output;
 	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public HashMap<String, Integer> getInput() {
+		return input;
+	}
+
+	public int getOutput() {
+		return output;
+	}
+
+	public void print()
+	{
+		System.out.println(id);
+		System.out.println(type);
+		System.out.println(input);
+		System.out.println(output);
+	}
 }

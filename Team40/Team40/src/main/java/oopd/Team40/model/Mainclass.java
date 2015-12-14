@@ -1,5 +1,7 @@
 package oopd.Team40.model;
 
+import java.sql.SQLException;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -15,16 +17,10 @@ public class Mainclass implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("hello");
-        DBHelper dbhelper = new DBHelper("root", "root");
+	
+        DBHelper dbhelper = DBHelper.getInstance();
 		dbhelper.createDatabase("digitalCircuits");
-		dbhelper.createCircuitsTable();
-		//System.out.println( dbhelper.getDbname());
+		dbhelper.createCircuitsTable(); 
 		
-		
-	}
-
-	
-
-	
+	}	
 }

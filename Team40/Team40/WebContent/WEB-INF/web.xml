@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:web="http://java.sun.com/xml/ns/javaee" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>Team40</display-name>
   
-   <servlet>
+  <servlet>
     <servlet-name>uploadxml</servlet-name>
     <servlet-class>oopd.Team40.servelet.Upload</servlet-class>
   </servlet>
@@ -10,17 +10,24 @@
     <servlet-name>uploadxml</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
-<<<<<<< 6a1ee5aa033197525177ecb380e48e562c872e83
-=======
+  
+  <servlet>
+    <servlet-name>drawcircuit</servlet-name>
+    <servlet-class>oopd.Team40.servelet.DiagramDraw</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>drawcircuit</servlet-name>
+    <url-pattern>/draw</url-pattern>
+  </servlet-mapping>
   
   <listener>
-	<listener-class>
+    <listener-class>
              oopd.Team40.model.Mainclass
     </listener-class>
-   </listener>
-    <welcome-file-list>
-    <welcome-file>display.jsp</welcome-file>
-    </welcome-file-list>
+  </listener>
   
->>>>>>> 9e9bc3a900e3da1aca47cf9e7f55c98585b061f7
-  </web-app>
+  <welcome-file-list>
+    <welcome-file>display.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>
