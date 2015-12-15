@@ -1,22 +1,19 @@
 package oopd.Team40.servelet;
 
 import java.io.File;
+
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.sql.SQLException;
 import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import oopd.Team40.data.DBHelper;
 import oopd.Team40.model.Circuit;
 
@@ -53,10 +50,9 @@ public class Upload extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	   //	doGet(request, response);
-		
+		  Circuit circuit=new Circuit();
 	    ServletContext servletContext = getServletContext();
-	    Circuit circuit=new Circuit();
-		String contextPath = servletContext.getRealPath(File.separator);
+	    String contextPath = servletContext.getRealPath(File.separator);
 		this.DIRECTORY = contextPath;
 	    String name = null;
 	
@@ -90,7 +86,7 @@ public class Upload extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.getRequestDispatcher("/result.jsp").forward(request, response);
+		request.getRequestDispatcher("/home.jsp").forward(request, response);
 		
 		
     }

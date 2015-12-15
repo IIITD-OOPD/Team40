@@ -1,8 +1,6 @@
 package oopd.Team40.data;
 
 import java.sql.Connection;
-
-
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
-
 import oopd.Team40.model.Circuit;
 import oopd.Team40.model.Gate;
 
@@ -57,9 +54,9 @@ public class DBHelper {
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/",user, pwd);
 			Statement stmt = con.createStatement();
-			stmt.execute("drop database if exists " + dbname);
-			stmt = con.createStatement();
-			stmt.execute(" Create database " + dbname);
+			/*stmt.execute("drop database if exists " + dbname);
+			stmt = con.createStatement();*/
+			stmt.execute(" Create database if not exists " + dbname);
 			con.close();
 			return true;
 		} catch (SQLException e) {
@@ -100,13 +97,13 @@ public class DBHelper {
 		try {
 			Connection connection = getConnection();
 			stmt = connection.createStatement();
-			String sql = "CREATE TABLE circuits (c_id Integer AUTO_INCREMENT,c_name varchar(25),PRIMARY KEY (c_id))";
+			String sql = "CREATE TABLE if not exists circuits (c_id Integer AUTO_INCREMENT,c_name varchar(25),PRIMARY KEY (c_id))";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE Inputs (c_id Integer,I_id varchar(25),PRIMARY KEY (c_id,I_id))";
+			sql = "CREATE TABLE if not exists Inputs (c_id Integer,I_id varchar(25),PRIMARY KEY (c_id,I_id))";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE Outputs (c_id Integer,O_id varchar(25),PRIMARY KEY (c_id,O_id))";
+			sql = "CREATE TABLE if not exists Outputs (c_id Integer,O_id varchar(25),PRIMARY KEY (c_id,O_id))";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE Gates (c_id Integer,G_id Integer,type varchar(25),Input_1 varchar(25),Input_2 varchar(25),PRIMARY KEY (c_id,G_id))";
+			sql = "CREATE TABLE if not exists Gates (c_id Integer,G_id Integer,type varchar(25),Input_1 varchar(25),Input_2 varchar(25),PRIMARY KEY (c_id,G_id))";
 			stmt.executeUpdate(sql);
 			
 			connection.close();

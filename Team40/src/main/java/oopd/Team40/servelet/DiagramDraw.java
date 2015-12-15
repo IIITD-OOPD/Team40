@@ -36,8 +36,9 @@ public class DiagramDraw extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-	    String circuit = request.getParameter("id");
-	    System.out.println(circuit);
+	    String circuitName = request.getParameter("id");
+	    System.out.println(circuitName);
+	    
 	}
 
 }

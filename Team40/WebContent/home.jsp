@@ -36,8 +36,8 @@ select * from circuits;
 </tr>
 <c:forEach var="row" items="${result1.rows}">
 <tr>
-	<td><input type="checkbox" name="id" value="${row.circuitName}"></td>
-   	<td><c:out value="${row.circuitName}"/></td>
+	<td><input type="checkbox" name="id" value="${row.c_name}"></td>
+   	<td><c:out value="${row.c_name}"/></td>
    
 </tr>
 </c:forEach>
