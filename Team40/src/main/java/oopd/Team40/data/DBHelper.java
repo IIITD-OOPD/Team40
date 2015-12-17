@@ -103,7 +103,7 @@ public class DBHelper {
 			stmt.executeUpdate(sql);
 			sql = "CREATE TABLE if not exists Outputs (c_id Integer,O_id varchar(25),PRIMARY KEY (c_id,O_id))";
 			stmt.executeUpdate(sql);
-			sql = "CREATE TABLE if not exists Gates (c_id Integer,G_id Integer,type varchar(25),Input_1 varchar(25),Input_2 varchar(25),PRIMARY KEY (c_id,G_id))";
+			sql = "CREATE TABLE if not exists Gates (c_id Integer,G_id varchar(25),type varchar(25),Input_1 varchar(25),Input_2 varchar(25),PRIMARY KEY (c_id,G_id))";
 			stmt.executeUpdate(sql);
 			
 			connection.close();

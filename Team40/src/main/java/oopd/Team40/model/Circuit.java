@@ -9,16 +9,16 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class Circuit 
 {
-	String name;
-	HashMap<String,Integer> inputs = new HashMap<String,Integer>();
-	HashMap<String,Integer> outputs = new HashMap<String,Integer>();
-	ArrayList<Gate> gates = new ArrayList<Gate>();
+	private String name;
+	private HashMap<String,Integer> inputs = new HashMap<String,Integer>();
+	private HashMap<String,Integer> outputs = new HashMap<String,Integer>();
+	private ArrayList<Gate> gates = new ArrayList<Gate>();
     
 	
 	public String getName() {

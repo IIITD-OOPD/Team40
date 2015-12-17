@@ -1,0 +1,41 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Team40</display-name>
+ 
+ 
+ 
+  <listener>
+    <listener-class>
+             oopd.Team40.model.Mainclass
+    </listener-class>
+  </listener>
+  
+  
+   
+  <servlet>
+    <servlet-name>uploadxml</servlet-name>
+    <servlet-class>oopd.Team40.servlet.Upload</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>circuitInput</servlet-name>
+  	<servlet-class>oopd.Team40.servlet.TakeInput</servlet-class>
+  </servlet>
+  
+  
+  <servlet-mapping>
+    <servlet-name>uploadxml</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>circuitInput</servlet-name>
+  	<url-pattern>/takeInput</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>home.jsp</welcome-file>
+  </welcome-file-list>
+   
+</web-app>

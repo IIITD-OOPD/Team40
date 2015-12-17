@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 public class Gate 
 {
-	String id;
-	String type;
-	HashMap<String,Integer> input = new HashMap<String,Integer>();
-	int output;
+	private String id;
+	private String type;
+	private HashMap<String,Integer> input = new HashMap<String,Integer>();
+	private int output;
 	
 	public Gate(String id, String type, HashMap<String, Integer> input, int output) 
 	{
