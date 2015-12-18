@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
@@ -67,6 +68,17 @@ for(int i = 0 ; i < size ; i++)
    </table>
    
    </form>
-</script>
+   
+<%List<int[]> outputList = null; 
+outputList=(List<int[]>)request.getAttribute("list"); 
+if(outputList!=null) 
+{
+for(int i=0;i<outputList.size();i++)
+{
+    out.println(outputList.get(i));
+}
+}
+%>
+
 </body>
 </html>

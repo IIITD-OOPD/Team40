@@ -117,12 +117,12 @@ public class Circuit
 					Node outputInputNode = outputInputList.item(j);
 					if(outputInputNode.getAttributes().getNamedItem("type").getNodeValue().equals("input"))
 					{
-						outputs.put(outputNode.getAttributes().getNamedItem("id").getNodeValue()+"I"+outputInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
+						outputs.put("I"+outputInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
 					}
 					else
 					if(outputInputNode.getAttributes().getNamedItem("type").getNodeValue().equals("gate"))
 				    {
-						outputs.put(outputNode.getAttributes().getNamedItem("id").getNodeValue()+"G"+outputInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
+						outputs.put("G"+outputInputNode.getAttributes().getNamedItem("id").getNodeValue(),-1);
 					}
 				}
 			}	
@@ -134,3 +134,4 @@ public class Circuit
 		 }
 	}
 }
+//outputNode.getAttributes().getNamedItem("id").getNodeValue()+
