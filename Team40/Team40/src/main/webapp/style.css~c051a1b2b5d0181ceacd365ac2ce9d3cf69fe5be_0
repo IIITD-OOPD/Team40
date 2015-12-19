@@ -1,0 +1,13 @@
+@CHARSET "ISO-8859-1";
+
+.row {
+    width: 1200px;
+    height: 20px;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    
+    float: left;
+}
