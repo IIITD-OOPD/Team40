@@ -20,7 +20,13 @@ public class Circuit
 	private HashMap<String,Integer> outputs = new HashMap<String,Integer>();
 	private ArrayList<Gate> gates = new ArrayList<Gate>();
     
-	
+	public Circuit() {
+		
+	}
+	public Circuit(String name)
+	{
+		this.name = name;
+	}
 	public String getName() {
 		return name;
 	}
@@ -134,4 +140,3 @@ public class Circuit
 		 }
 	}
 }
-//outputNode.getAttributes().getNamedItem("id").getNodeValue()+

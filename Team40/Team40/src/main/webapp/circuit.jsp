@@ -9,8 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+
 </head>
 <body>
 <div id="result">
@@ -24,28 +23,7 @@ upload xml: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <input type="submit" value="Upload File" />
 </form>
 
-<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/digitalCircuits"
-     user="root"  password="root"/>
- 
-	<sql:query dataSource="${snapshot}" var="result1">
-		select * from circuits;
-	</sql:query>
-<form action="draw" method="post">
-<table border="0" width="30%">
-<tr>
-   <th>circuits</th>
-   
-</tr>
-<c:forEach var="row" items="${result1.rows}">
-<tr>
-	<td><input type="checkbox" name="id" value="${row.c_name}" ></td>
-   	<td><c:out value="${row.c_name}"/></td>
-   
-</tr>
-</c:forEach>
-<tr><td><input type="submit" value="Submit" /> </td></tr>
-</table>
-</form>
+<jsp:include page="print.jsp"></jsp:include>
 <form action="takeInput" method = "post">
 <% if((Integer)request.getSession().getAttribute("size")!=0) 
 {
@@ -59,7 +37,7 @@ for(int i = 0 ; i < size ; i++)
    %>
    
    <tr>
-   <td> <input type="checkbox" name="id" value="<%=j%>" ></td>
+   <td> <input type="checkbox" name="id" value="<%=j%>" /></td>
    </tr>
    
 	<%}} %>   
@@ -68,7 +46,7 @@ for(int i = 0 ; i < size ; i++)
    </table>
    
    </form>
-   
+<jsp:include page="draw.jsp"></jsp:include>
 <%List<int[]> outputList = null; 
 outputList=(List<int[]>)request.getAttribute("list"); 
 if(outputList!=null) 

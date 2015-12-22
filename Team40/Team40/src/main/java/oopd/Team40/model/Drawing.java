@@ -1,8 +1,9 @@
 package oopd.Team40.model;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.Map;
+
 import java.util.TreeMap;
 
 public class Drawing {
@@ -55,7 +56,7 @@ public class Drawing {
 			    	}
 	    			if(flag==0)
 	    			{
-	    					String type = gate.getType();
+	    					
 	    					int k=0;
 	    					boolean output=false;
 	    					boolean[] gateInput = new boolean[2];
