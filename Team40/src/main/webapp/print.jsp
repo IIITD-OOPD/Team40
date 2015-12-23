@@ -1,3 +1,4 @@
+<%@page import="oopd.Team40.data.DBHelper"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -14,21 +15,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/digitalCircuits" user="root" password="root"/>
-<sql:query dataSource="${snapshot}" var="result">
-select * from circuits;
-</sql:query>
+<%DBHelper dbHelp = DBHelper.getInstance();
+ List<String> list = new ArrayList<String>();
+ list = dbHelp.allCircuit();
+ pageContext.setAttribute("list",list);
+%>
+
+
 <form action="chooseCircuit" method="get">
 <table border="0" width="30%">
 <tr>
    <th>circuits</th>
    
 </tr>
-<c:forEach var="row" items="${result.rows}">
-<tr><c:set var="circuitName"  value="${row.c_name}"></c:set>
-	<td><input type="checkbox" name="circuit_name" value="<c:out value="${circuitName}"/>"><c:out value="${circuitName}"/></td>
-   	
-    
+<c:forEach var="row" items="${list}">
+<tr>
+	<td><input type="checkbox" name="circuit_name" value="<c:out value="${row}"/>"><c:out value="${row}"/></td>
 </tr>
 </c:forEach>
 <tr><td><input type="submit" value="Submit" ></td></tr>

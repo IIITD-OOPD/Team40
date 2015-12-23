@@ -1,5 +1,7 @@
 package oopd.Team40.servlet;
 
+
+
 import java.io.IOException;
 
 
@@ -12,6 +14,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import oopd.Team40.model.Circuit;
 import oopd.Team40.model.Drawing;
@@ -32,7 +36,7 @@ public class TakeInput extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		    
+		
 		Circuit circuit = (Circuit)request.getSession().getAttribute("circuit");
 		HashMap<String,Integer> id = new HashMap<String,Integer>();
 		String[] inputs = null;

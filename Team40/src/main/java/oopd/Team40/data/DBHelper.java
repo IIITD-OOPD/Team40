@@ -214,7 +214,7 @@ public class DBHelper {
 		Connection connection = getConnection();
 		List<String> sList = new ArrayList<String>();
 		Statement stmt = connection.createStatement();
-		String sql = "SELECT circuitName FROM circuits";
+		String sql = "SELECT c_name FROM circuits";
 		ResultSet rs= stmt.executeQuery(sql);
 		if(!rs.next())
 		{
@@ -224,7 +224,7 @@ public class DBHelper {
 		{
 			while(rs.next())
 			{ 
-				sList.add(rs.getString("circuitName"));
+				sList.add(rs.getString("c_name"));
 			}
 		}
 		connection.close();
